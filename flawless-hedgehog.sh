@@ -9,7 +9,10 @@ cp $conf ${conf}.before_launching_flawless-hedgehog
 echo -e "\n##################################################" >> $conf
 echo -e "# Security directives added by flawless-hedgehog" >> $conf
 echo -e "##################################################\n" >> $conf
+
+echo "Setting Apache version display on Production mode"
 echo 'ServerTokens Prod' >> $conf
+echo "Disabling server signature on error pages"
 echo 'ServerSignature Off' >> $conf
 
 
