@@ -10,8 +10,15 @@ echo -e "\n##################################################" >> $conf
 echo -e "# Security directives added by flawless-hedgehog" >> $conf
 echo -e "##################################################\n" >> $conf
 
+read -p "Do you want to hide Apache version in HTTP header ? (y/n):" ans
+while [ "$ans" != 'y' -o "$ans" != 'n' ]
+do
+	read -p "Do you want to hide Apache version in HTTP header ? (y/n):" ans
+done
 echo "Setting Apache version display on Production mode"
 echo 'ServerTokens Prod' >> $conf
+
+
 echo "Disabling server signature on error pages"
 echo 'ServerSignature Off' >> $conf
 
