@@ -27,6 +27,10 @@ echo -e "# Security directives added by flawless-hedgehog" >> $config
 echo -e "##################################################\n" >> $config
 
 
+
+########################################
+# hide version in HTTP header
+########################################
 read -p $'\n'"Do you want to hide Apache version in HTTP response header ? (y/n):" ans
 while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
 do
@@ -38,16 +42,35 @@ then
 	echo 'ServerTokens Prod' >> $config
 fi
 
-
+########################################
+# server signature
+########################################
 read -p $'\n'"Do you want to disable server signature on error pages ? (y/n):" ans
 while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
 do
-	read -p "Do you want to hide Apache version in HTTP header ? (y/n):" ans
+	read -p $'\n'"Do you want to disable server signature on error pages ? (y/n):" ans
 done
 if [ "$ans" == 'y' ]
 then
 	echo "Disabling server signature on error pages: Directive 'ServerSignature' set to off"
 	echo 'ServerSignature Off' >> $config
+fi
+
+########################################
+# directory listing
+########################################
+read -p $'\n'"Disable directory listing ? (y/n):" ans
+while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
+do
+	read -p $'\n'"Disable directory listing ? (y/n):" ans
+done
+if [ "$ans" == 'y' ]
+then
+	echo "Disabling directory listing: Added '-Indexes' to directive 'Options' for all directories"
+	# if no 'indexes':
+	sed -i sed -i 's/[.]*Options[.]*/-Indexes/g' $config
+	# if grep 'indexes':
+	# ajouter '-'
 fi
 
 
@@ -58,13 +81,8 @@ fi
 
 
 
-#~ grep 'timezone =' $conf
-#~ echo "is now :"
-#~ sed -i 's/^;\(date.timezone =\)[.]*/\1 Europe\/Paris/g' $conf
-#~ grep 'timezone =' $conf
-
 service apache2 reload
 
-echo -e "\nIf you feel like I fucked up your server, don't panic and run :"
+echo -e "\nIf you feel like I messed up your configuration, don't panic and run :"
 echo "sudo cp $backup $config"
 echo "Regards (^~^)"
