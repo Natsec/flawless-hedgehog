@@ -57,6 +57,12 @@ then
 fi
 
 ########################################
+# Etag
+########################################
+echo "Disabling Etag (could allow remote attacker to obtain informations on system): Directive 'FileETag' set to None"
+echo 'FileETag None' >> $config
+
+########################################
 # directory listing
 ########################################
 read -p $'\n'"Disable directory listing ? (y/n):" ans
