@@ -9,7 +9,7 @@ The script features the most common best practices that should be applied to a w
 
 #### Information leakage:
 - Hide the Apache server signature on error pages
--- Hide the Apache version in HTTP response headers
+  - Hide the Apache version in HTTP response headers
 - Disable the Etag response header
 
 #### Exploration:
