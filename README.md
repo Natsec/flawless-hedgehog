@@ -7,22 +7,23 @@ Because it is intended to add a first layer of security rapidly, it avoid making
 You have control on every action applied to your configuration.
 The script features the most common best practices that should be applied to a web server that is exposed to the Internet, as following.
 
-#### Information leakage:
+### Information leakage:
 - Hide the Apache server signature on error pages
-  - Hide the Apache version in HTTP response headers
-    - Disable the Etag response header
+- Hide the Apache version in HTTP response headers
+- Disable the Etag response header
 
-#### Exploration:
+### Exploration:
 - Disable directory listing
 
-#### Authentication bypass:
+### Authentication bypass:
 - Restrict HTTP methods to GET, POST, HEAD
 
-#### Cross Site Scripting, Clickjacking:
+### Cross Site Scripting, Clickjacking:
 - Restrict X-Frame-Options to current domain
 
-#### DDoS (Slowloris):
+### DDoS (Slowloris):
 - Decrease the Timeout setting from 300 to 60 seconds
+
 
 
 
