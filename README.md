@@ -5,12 +5,15 @@ Because it is intended to add a first layer of security rapidly, it avoid making
 
 ## Features
 You have control on every action applied to your configuration.
-The script features the most common best practices that should be applied to a web server that is exposed to the Internet.
+The script features the most common best practices that should be applied to a web server that is exposed to the Internet, as following.
 
-It provides:
-- Hiding the Apache version on error pages
-- Hiding the Apache version in HTTP response headers
-- Disabling the Etag response header
+Information leakage:
+- Hide the Apache version on error pages
+- Hide the Apache version in HTTP response headers
+- Disable the Etag response header
+
+Exploration:
+- Disable directory listing
 
 ## Version of Apache tested
 The script has been tested on the following versions of Apache:
