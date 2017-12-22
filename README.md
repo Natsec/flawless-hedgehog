@@ -16,10 +16,9 @@ The script features the most common best practices that should be applied to a w
 - Disable directory listing
 
 #### Authentication bypass:
-- Restrict HTTP methods to GET,POST,HEAD
+- Restrict HTTP methods to GET, POST, HEAD
 
 #### Cross Site Scripting, Clickjacking:
-- Restrict HTTP methods to GET,POST,HEAD
 - Restrict X-Frame-Options to current domain
 
 #### DDoS (Slowloris):
