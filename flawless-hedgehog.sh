@@ -19,7 +19,7 @@ echo '        /. `::::::::::: '
 echo '       o__,_::::::::::° '
 
 
-echo -e "# Security directives added by flawless-hedgehog" >> $config
+echo -e "\n# Security directives added by flawless-hedgehog.sh on $(date)" >> $config
 
 
 echo -e "\n"
@@ -76,7 +76,7 @@ done
 if [ "$ans" == 'y' ]
 then
 	echo "Disabling directory listing: Removed parameter 'Indexes' from directive 'Options' for all directories"
-	sed -i 's/Indexes//g' $config
+	sed -i 's/ Indexes//g' $config
 fi
 
 
