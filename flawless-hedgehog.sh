@@ -6,12 +6,9 @@ then
 	exit 1
 fi
 
-
+clear
 config=/etc/apache2/apache2.conf
 backup=${config}.before_launching_flawless-hedgehog
-
-
-clear
 echo -e "[info] Making a backup of your configuration file as '${backup}'\n"
 cp $config $backup
 
@@ -22,33 +19,30 @@ echo '        /. `::::::::::: '
 echo '       o__,_::::::::::° '
 
 
-echo -e "\n##################################################" >> $config
 echo -e "# Security directives added by flawless-hedgehog" >> $config
-echo -e "##################################################\n" >> $config
 
 
+echo -e "\n"
+echo " Information leakage"
+echo "##################################################"
 
-########################################
 # hide version in HTTP header
-########################################
-read -p $'\n'"Do you want to hide Apache version in HTTP response header ? (y/n):" ans
+read -p $'\n'"Hide Apache version in HTTP response header ? (y/n):" ans
 while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
 do
-	read -p "Do you want to hide Apache version in HTTP header ? (y/n):" ans
+	read -p "Hide Apache version in HTTP header ? (y/n):" ans
 done
 if [ "$ans" == 'y' ]
 then
-	echo "Hidding Apache version in HTTP response header: Directive 'ServerTokens' set on Production mode"
+	echo "Hidding Apache version in HTTP response header: Directive 'ServerTokens' set to Production mode"
 	echo 'ServerTokens Prod' >> $config
 fi
 
-########################################
 # server signature
-########################################
-read -p $'\n'"Do you want to disable server signature on error pages ? (y/n):" ans
+read -p $'\n'"Disable server signature on error pages ? (y/n):" ans
 while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
 do
-	read -p $'\n'"Do you want to disable server signature on error pages ? (y/n):" ans
+	read -p $'\n'"Disable server signature on error pages ? (y/n):" ans
 done
 if [ "$ans" == 'y' ]
 then
@@ -56,15 +50,24 @@ then
 	echo 'ServerSignature Off' >> $config
 fi
 
-########################################
-# Etag
-########################################
-echo "Disabling Etag (could allow remote attacker to obtain informations on system): Directive 'FileETag' set to None"
-echo 'FileETag None' >> $config
+# etag
+read -p $'\n'"Disable Etag header ? (a remote attacker could obtain informations on your system). (y/n):" ans
+while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
+do
+	read -p $'\n'"Disable Etag header ? (a remote attacker could obtain informations on your system). (y/n):" ans
+done
+if [ "$ans" == 'y' ]
+then
+	echo "Disabling Etag response header: Directive 'FileETag' set to None"
+	echo 'FileETag None' >> $config
+fi
 
-########################################
+
+echo -e "\n"
+echo " Exploration"
+echo "##################################################"
+
 # directory listing
-########################################
 read -p $'\n'"Disable directory listing ? (y/n):" ans
 while [ "$ans" != 'y' ] && [ "$ans" != 'n' ]
 do
@@ -72,11 +75,8 @@ do
 done
 if [ "$ans" == 'y' ]
 then
-	echo "Disabling directory listing: Added '-Indexes' to directive 'Options' for all directories"
-	# if no 'indexes':
-	sed -i sed -i 's/[.]*Options[.]*/-Indexes/g' $config
-	# if grep 'indexes':
-	# ajouter '-'
+	echo "Disabling directory listing: Removed parameter 'Indexes' from directive 'Options' for all directories"
+	sed -i 's/Indexes//g' $config
 fi
 
 
@@ -86,9 +86,18 @@ fi
 
 
 
+echo -e "\n[info] Restarting Apache server ...\n"
+service apache2 restart
+service apache2 status
 
-service apache2 reload
+clear
+echo -e "Little hedgehog fluffed his spikes, your Apache configuration now has a first minimal layer of security !\n"
+
+echo '          ./////////.   '
+echo '         /////////////  '
+echo '        /. `/////////// '
+echo '       o__,_//////////° '
 
 echo -e "\nIf you feel like I messed up your configuration, don't panic and run :"
-echo "sudo cp $backup $config"
-echo "Regards (^~^)"
+echo -e "sudo cp $backup $config"
+echo -e "\nRegards (^~^)"
