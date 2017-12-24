@@ -1,5 +1,9 @@
 # Flawless Hedgehog
 An interactive Apache server hardening script.
+
+The native configuration of Apache comes rather loose in terms of security, as it is one of the most used web server, a lot of people use it to serve their website, this is why I wanted to help them thighten their configuration by at least providing them a rapid and easy way to add simple counter measures to potential threats.
+
+
 It is made to help securing an out-of-the-box Apache server without having to go deep inside the configuration files.
 Because it is intended to add a first layer of security rapidly, it avoid making too complex changes.
 
