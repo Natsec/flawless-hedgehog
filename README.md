@@ -3,8 +3,8 @@ An interactive Apache server hardening script.
 
 The native configuration of Apache comes rather loose in terms of security, as it is one of the most used web server, a lot of people use it to serve their website, this is why I wanted to help them thighten their configuration by at least providing them a rapid and easy way to add simple counter measures to potential threats.
 
-
 It is made to help securing an out-of-the-box Apache server without having to go deep inside the configuration files.
+
 Because it is intended to add a first layer of security rapidly, it avoid making too complex changes.
 
 ## Features
@@ -33,8 +33,9 @@ The script features the most common best practices that should be applied to a w
 
 ## Version of Apache tested
 The script has been tested on the following versions of Apache:
-- 2.blabla
+- 2.4.25
 
 ## Disclaimer
 Because it is intended to add a first layer of security rapidly, the script avoid making too complex changes that could interfer with upcomming modifications of your configuration, or system settings.
+
 As it dont go deep in the hardening process, the script cant be trusted to make your server "flawless", although it should be enough for a first pass in the process of making your web server more secure.
