@@ -24,6 +24,7 @@ The script features the most common best practices that should be applied to a w
 
 ### [XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)), [XST](https://www.owasp.org/index.php/Cross_Site_Tracing), [Clickjacking](https://www.owasp.org/index.php/Clickjacking):
 - Add 'HttpOnly' and 'Secure' flags to all cookies emitted by the server
+- Add header X-XSS-Protection to make browsers not load a page if a XSS attack is detected
 - Disable Trace method
 - Enable X-Frame-Options header and only allow iframes loading from the website domain
 
