@@ -24,7 +24,7 @@ The script features the most common best practices that should be applied to a w
 
 ### Cross Site Scripting, Clickjacking:
 - Add 'HttpOnly' and 'Secure' flags to all cookies emitted by the server
-- Add X-Frame-Options header and only allow iframes loading from the website domain
+- Enable X-Frame-Options header and only allow iframes loading from the website domain
 
 ### DDoS (Slowloris):
 - Decrease the Timeout setting from 300 to 60 seconds
