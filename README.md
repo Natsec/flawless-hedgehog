@@ -32,7 +32,12 @@ The script features the most common best practices that should be applied to a w
 - Decrease the Timeout setting from 300 to 60 seconds
 
 
-
+## Usage
+The script takes your apache2 configuration location as parameter. If no parameter is given, `/etc/apache2/apache2.conf` is assumed.
+```bash
+sudo chmod u+x
+sudo flawless-hedgehog.sh [your ]
+```
 
 ## Version of Apache tested
 The script has been tested on the following versions of Apache:
