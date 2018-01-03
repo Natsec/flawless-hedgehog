@@ -33,10 +33,10 @@ The script features the most common best practices that should be applied to a w
 
 
 ## Usage
-The script takes your apache2 configuration location as parameter. If no parameter is given, `/etc/apache2/apache2.conf` is assumed.
-```bash
-sudo chmod u+x
-sudo flawless-hedgehog.sh [your ]
+The script takes your Apache2 configuration path as parameter. If no parameter is given, `/etc/apache2/apache2.conf` is assumed.
+```Shell
+kamil@vps457979:~$ sudo chmod u+x
+sudo flawless-hedgehog.sh [your Apache2 configuration path]
 ```
 
 ## Version of Apache tested
