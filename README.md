@@ -22,7 +22,7 @@ The script features the most common best practices that should be applied to a w
 ### Authentication bypass:
 - Restrict HTTP methods to GET, POST, HEAD
 
-### [Cross-Site Scripting](https://autohotkey.com) (XSS), Cross-Site Tracing (XST), Clickjacking:
+### [XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)), [XST](https://www.owasp.org/index.php/Cross_Site_Tracing), [Clickjacking](https://www.owasp.org/index.php/Clickjacking):
 - Add 'HttpOnly' and 'Secure' flags to all cookies emitted by the server
 - Disable Trace method
 - Enable X-Frame-Options header and only allow iframes loading from the website domain
