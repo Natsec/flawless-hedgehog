@@ -22,8 +22,9 @@ The script features the most common best practices that should be applied to a w
 ### Authentication bypass:
 - Restrict HTTP methods to GET, POST, HEAD
 
-### Cross Site Scripting, Clickjacking:
+### Cross-Site Scripting (XSS), Cross-Site Tracing (XST), Clickjacking:
 - Add 'HttpOnly' and 'Secure' flags to all cookies emitted by the server
+- Disable Trace method
 - Enable X-Frame-Options header and only allow iframes loading from the website domain
 
 ### DDoS (Slowloris):
