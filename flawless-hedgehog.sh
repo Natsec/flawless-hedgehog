@@ -7,11 +7,18 @@ then
 fi
 
 clear
-echo -e "[info] Get more info at https://github.com/Natsec/flawless-hedgehog"
-config=/etc/apache2/apache2.conf
-backup=${config}.before_launching_flawless-hedgehog && echo -e "[info] Making a backup of your configuration file as '${backup}'\n"
+echo "Get more info at https://github.com/Natsec/flawless-hedgehog"
+
+if [ $# -eq 1 ]
+then
+	config=$1
+else
+	config=/etc/apache2/apache2.conf && echo "[info] No parameter given, configuration file assumed to be $config"
+fi
+
+backup=${config}.before_launching_flawless-hedgehog
+cp $config $backup && echo -e "[info] Making a backup of your configuration file as  -->   ${backup}\n"
 echo -e "\n# Security directives added by flawless-hedgehog.sh on $(date)" >> $config
-cp $config $backup
 
 
 echo '          .:::::::::.   '
@@ -69,6 +76,7 @@ done
 if [ "$ans" == 'y' ]
 then
 	sed -i 's/ Indexes//g' $config && echo "Disabling directory listing: Removed parameter 'Indexes' from directive 'Options' for all directories."
+	echo "# removed parameter 'Indexes' from directive 'Options' for all directories" >> $config
 fi
 
 
@@ -84,6 +92,7 @@ done
 if [ "$ans" == 'y' ]
 then
 	sed -i 's@<Directory /var/www/>@<Directory /var/www/>\n\t<LimitExcept GET POST HEAD>\n\t\tdeny from all\n\t</LimitExcept>@g' $config && echo "HTTP method restricted to GET, POST and HEAD."
+	echo "# http method restricted to GET, POST and HEAD for directory /var/www" >> $config
 fi
 
 
@@ -149,7 +158,8 @@ do
 done
 if [ "$ans" == 'y' ]
 then
-	sed -i 's@\(Timeout\) 300@\1 40@g' $config && echo "Changed 'Timeout' directive's value to 40."
+	sed -i 's@^\(Timeout\) 300@\1 40@g' $config && echo "Changed 'Timeout' value to 40."
+	echo "# changed 'Timeout' value to 40 (default was 300)" >> $config
 fi
 
 
@@ -169,6 +179,5 @@ echo '         /////////////  '
 echo '        /. `/////////// '
 echo '       o__,_//////////° '
 
-echo -e "\nIf you feel like I messed up your configuration, don't panic and run :"
-echo -e "sudo cp $backup $config"
+echo -e "\nIf you feel like I messed up your configuration, don't panic and run :\nsudo cp $backup $config"
 echo -e "\nRegards (^~^)"
