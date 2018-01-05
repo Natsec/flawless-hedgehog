@@ -47,4 +47,3 @@ The script has been tested on the following versions of Apache:
 Because it is intended to add a first layer of security rapidly, the script avoid making too complex changes that could interfer with upcomming modifications of your configuration, or system settings.
 
 As it dont go deep in the hardening process, the script cant be trusted to make your server "flawless", although it should be enough for a first step in the process of making your web server more secure.
-
