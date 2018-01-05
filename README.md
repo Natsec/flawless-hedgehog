@@ -37,7 +37,7 @@ The script takes your Apache2 configuration path as parameter. If no parameter i
 ```bash
 wget https://raw.githubusercontent.com/Natsec/flawless-hedgehog/master/flawless-hedgehog.sh
 chmod u+x flawless-hedgehog.sh
-sudo flawless-hedgehog.sh [your Apache2 configuration path]
+sudo ./flawless-hedgehog.sh [your Apache2 configuration path]
 ```
 
 ## Version of Apache tested
