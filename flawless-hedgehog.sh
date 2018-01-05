@@ -181,3 +181,4 @@ echo '       o__,_//////////° '
 
 echo -e "\nIf you feel like I messed up your configuration, don't panic and run :\nsudo cp $backup $config"
 echo -e "\nRegards (^~^)"
+
