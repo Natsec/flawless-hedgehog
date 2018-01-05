@@ -35,7 +35,8 @@ The script features the most common best practices that should be applied to a w
 ## Usage
 The script takes your Apache2 configuration path as parameter. If no parameter is given, `/etc/apache2/apache2.conf` is assumed.
 ```bash
-sudo chmod u+x flawless-hedgehog.sh
+wget https://raw.githubusercontent.com/Natsec/flawless-hedgehog/master/flawless-hedgehog.sh
+chmod u+x flawless-hedgehog.sh
 sudo flawless-hedgehog.sh [your Apache2 configuration path]
 ```
 
