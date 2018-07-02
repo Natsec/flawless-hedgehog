@@ -24,7 +24,7 @@ The script features the most common best practices that should be applied to a w
 
 ### [XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)), [XST](https://www.owasp.org/index.php/Cross_Site_Tracing), [Clickjacking](https://www.owasp.org/index.php/Clickjacking):
 - Add 'HttpOnly' and 'Secure' flags to all cookies emitted by the server
-- Add header X-XSS-Protection to make browsers not load a page if a XSS attack is detected
+- Add 'X-XSS-Protection' header to make browsers not load a page if a XSS attack is detected
 - Disable TRACE method
 - Enable X-Frame-Options header and only allow iframes loading from the website domain
 
@@ -37,7 +37,7 @@ The script takes your Apache2 configuration path as parameter. If no parameter i
 ```bash
 wget https://raw.githubusercontent.com/Natsec/flawless-hedgehog/master/flawless-hedgehog.sh
 chmod u+x flawless-hedgehog.sh
-sudo ./flawless-hedgehog.sh [your Apache2 configuration path]
+sudo ./flawless-hedgehog.sh ~[path to apache2.conf]
 ```
 
 ## Version of Apache tested
